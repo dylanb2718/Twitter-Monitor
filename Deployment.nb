@@ -10,38 +10,26 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25958,        596]
-NotebookOptionsPosition[     23376,        545]
-NotebookOutlinePosition[     23728,        561]
-CellTagsIndexPosition[     23685,        558]
+NotebookDataLength[     14228,        348]
+NotebookOptionsPosition[     11518,        293]
+NotebookOutlinePosition[     11904,        310]
+CellTagsIndexPosition[     11861,        307]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["Deployment Process", "Section",
- CellChangeTimes->{{3.746192908098687*^9, 
-  3.746192913748316*^9}},ExpressionUUID->"cc048347-7bdc-4c3e-a84d-\
-9e92f9ee8cb8"],
+Cell["Deployment Process", "Section",ExpressionUUID->"cc048347-7bdc-4c3e-a84d-9e92f9ee8cb8"],
 
 Cell[CellGroupData[{
 
-Cell["1. Create Databin", "Subsection",
- CellChangeTimes->{{3.74619292303209*^9, 
-  3.746192928194529*^9}},ExpressionUUID->"c73da20d-36fe-4caa-acf4-\
-0e63d25b795e"],
+Cell["1. Create Databin", "Subsection",ExpressionUUID->"c73da20d-36fe-4caa-acf4-0e63d25b795e"],
 
 Cell["\<\
 Creating the Databin is the first step because the Short ID is needed for the \
 ProcessorTask as well as the graphics.\
-\>", "Text",
- CellChangeTimes->{{3.746192931722179*^9, 3.746192955079818*^9}, {
-  3.746193047099621*^9, 
-  3.746193047789657*^9}},ExpressionUUID->"02101a3b-6d2f-4919-a10f-\
-2697ea859ed7"],
-
-Cell[CellGroupData[{
+\>", "Text",ExpressionUUID->"02101a3b-6d2f-4919-a10f-2697ea859ed7"],
 
 Cell[BoxData[
  RowBox[{"CreateDatabin", "[", 
@@ -50,307 +38,15 @@ Cell[BoxData[
   "]"}]], "Input",
  CellLabel->"In[41]:=",ExpressionUUID->"f4d4461a-90d1-477b-b56e-fbe4af3e46f7"],
 
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{
-   TagBox["Databin",
-    "SummaryHead"], "[", 
-   DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = "Ready"}, 
-    
-    TemplateBox[{PaneSelectorBox[{False -> GridBox[{{
-            PaneBox[
-             ButtonBox[
-              DynamicBox[
-               FEPrivate`FrontEndResource[
-               "FEBitmaps", "SquarePlusIconMedium"]], 
-              ButtonFunction :> (Typeset`open$$ = True), Appearance -> None, 
-              Evaluator -> Automatic, Method -> "Preemptive"], 
-             Alignment -> {Center, Center}, ImageSize -> 
-             Dynamic[{
-               Automatic, 3.5 CurrentValue["FontCapHeight"]/
-                AbsoluteCurrentValue[Magnification]}]], 
-            GraphicsBox[{
-              Thickness[0.05555555555555555], 
-              StyleBox[{
-                
-                FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
-                  0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 
-                  0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 
-                  0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 
-                  0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
-                  0}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {
-                  1, 3, 3}}}, {{{15.646999999999998`, 5.933000000000001}, {
-                  13.585, 7.263}, {15.533, 8.458}, {17.332, 
-                  7.363999999999999}, {15.646999999999998`, 
-                  5.933000000000001}}, {{12.697, 3.425}, {10.245, 5.212}, {
-                  12.491, 6.591}, {14.725999999999999`, 
-                  5.1499999999999995`}, {12.697, 3.425}}, {{8.666, 0.}, {
-                  5.978000000000001, 2.285}, {8.666, 4.244}, {
-                  11.354000000000001`, 2.285}, {8.666, 0.}}, {{4.635, 
-                  3.425}, {2.606, 5.1499999999999995`}, {4.841, 6.591}, {
-                  7.087, 5.212}, {4.635, 3.425}}, {{0., 7.363999999999999}, {
-                  1.799, 8.458}, {3.7470000000000003`, 7.263}, {
-                  1.6840000000000002`, 5.933000000000001}, {0., 
-                  7.363999999999999}}, CompressedData["
-1:eJxTTMoPSmViYGAQBmIQrbtp7vvlbqIOP+uy9pQIqzr8Wfnxkm+SjIPIOveH
-VVNUHNgbpzp3v1Fw2Pb575WKk0YOpnG7PHmYFB1eB+6Qa+U2djDvdEx4OkHR
-AWTMMSA/PQ0Ilik61NgDVQLVF9hyXV9coOKwp2SyBMs0FYcFUvp3Vdg04PbJ
-twJNikPwV4Gsn6DhAFQdxrdWxWHWTCCI1HAAOSMnXcXB42GVyLrjig5nz4CA
-hEMWyOAWRQd+kEfUJaDmKzpoxvQf+qoh4RDQOz1P6LCCA5N2u9jNcxIOlltO
-lO2bLwI3TxJoja6RCNw+kO7GqSJw96CHDwDEr32g
-                  "]}]}, 
-               FaceForm[
-                RGBColor[0.44721600000000006`, 0.519288, 0.528528, 1.]], 
-               StripOnInput -> False]}, {
-             Background -> GrayLevel[0.93], Axes -> False, AspectRatio -> 1, 
-              ImageSize -> {Automatic, 
-                Dynamic[
-                3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
-                  Magnification])]}, Frame -> True, FrameTicks -> None, 
-              PlotRangePadding -> 2.5, FrameStyle -> Directive[
-                Thickness[Tiny], 
-                GrayLevel[0.55]], ImageSize -> {18., 19.}, 
-              PlotRange -> {{0., 18.}, {0., 19.}}, AspectRatio -> Automatic}], 
-            GridBox[{{
-               RowBox[{
-                 TagBox["\"Name: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox["\"TwitterSilo\"", "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"Entry count: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox[
-                  DynamicBox[
-                   ToBoxes[
-                    Lookup[
-                    Replace[
-                    
-                    DataDropClient`Private`datadropclientcache[{
-                    "DatabinStats", 
-                    "DDa31c766535b-d589-4f89-ab01-7ecaf392b010"}], Except[
-                    Blank[Association]] -> {}, {0}], "EntryCount", 
-                    Missing[]], StandardForm]], "SummaryItem"]}]}}, 
-             GridBoxAlignment -> {
-              "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
-             False, GridBoxItemSize -> {
-              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-             GridBoxSpacings -> {"Columns" -> {{2}}, "Rows" -> {{Automatic}}},
-              BaseStyle -> {
-              ShowStringCharacters -> False, NumberMarks -> False, 
-               PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
-          GridBoxAlignment -> {"Rows" -> {{Top}}}, AutoDelete -> False, 
-          GridBoxItemSize -> {
-           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-          BaselinePosition -> {1, 1}], True -> GridBox[{{
-            PaneBox[
-             ButtonBox[
-              DynamicBox[
-               FEPrivate`FrontEndResource[
-               "FEBitmaps", "SquareMinusIconMedium"]], 
-              ButtonFunction :> (Typeset`open$$ = False), Appearance -> None, 
-              Evaluator -> Automatic, Method -> "Preemptive"], 
-             Alignment -> {Center, Center}, ImageSize -> 
-             Dynamic[{
-               Automatic, 3.5 CurrentValue["FontCapHeight"]/
-                AbsoluteCurrentValue[Magnification]}]], 
-            GraphicsBox[{
-              Thickness[0.05555555555555555], 
-              StyleBox[{
-                
-                FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
-                  0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 
-                  0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 
-                  0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 
-                  0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
-                  0}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {
-                  1, 3, 3}}}, {{{15.646999999999998`, 5.933000000000001}, {
-                  13.585, 7.263}, {15.533, 8.458}, {17.332, 
-                  7.363999999999999}, {15.646999999999998`, 
-                  5.933000000000001}}, {{12.697, 3.425}, {10.245, 5.212}, {
-                  12.491, 6.591}, {14.725999999999999`, 
-                  5.1499999999999995`}, {12.697, 3.425}}, {{8.666, 0.}, {
-                  5.978000000000001, 2.285}, {8.666, 4.244}, {
-                  11.354000000000001`, 2.285}, {8.666, 0.}}, {{4.635, 
-                  3.425}, {2.606, 5.1499999999999995`}, {4.841, 6.591}, {
-                  7.087, 5.212}, {4.635, 3.425}}, {{0., 7.363999999999999}, {
-                  1.799, 8.458}, {3.7470000000000003`, 7.263}, {
-                  1.6840000000000002`, 5.933000000000001}, {0., 
-                  7.363999999999999}}, CompressedData["
-1:eJxTTMoPSmViYGAQBmIQrbtp7vvlbqIOP+uy9pQIqzr8Wfnxkm+SjIPIOveH
-VVNUHNgbpzp3v1Fw2Pb575WKk0YOpnG7PHmYFB1eB+6Qa+U2djDvdEx4OkHR
-AWTMMSA/PQ0Ilik61NgDVQLVF9hyXV9coOKwp2SyBMs0FYcFUvp3Vdg04PbJ
-twJNikPwV4Gsn6DhAFQdxrdWxWHWTCCI1HAAOSMnXcXB42GVyLrjig5nz4CA
-hEMWyOAWRQd+kEfUJaDmKzpoxvQf+qoh4RDQOz1P6LCCA5N2u9jNcxIOlltO
-lO2bLwI3TxJoja6RCNw+kO7GqSJw96CHDwDEr32g
-                  "]}]}, 
-               FaceForm[
-                RGBColor[0.44721600000000006`, 0.519288, 0.528528, 1.]], 
-               StripOnInput -> False]}, {
-             Background -> GrayLevel[0.93], Axes -> False, AspectRatio -> 1, 
-              ImageSize -> {Automatic, 
-                Dynamic[
-                3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
-                  Magnification])]}, Frame -> True, FrameTicks -> None, 
-              PlotRangePadding -> 2.5, FrameStyle -> Directive[
-                Thickness[Tiny], 
-                GrayLevel[0.55]], ImageSize -> {18., 19.}, 
-              PlotRange -> {{0., 18.}, {0., 19.}}, AspectRatio -> Automatic}], 
-            GridBox[{{
-               RowBox[{
-                 TagBox["\"Name: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox["\"TwitterSilo\"", "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"Entry count: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox[
-                  DynamicBox[
-                   ToBoxes[
-                    Lookup[
-                    Replace[
-                    
-                    DataDropClient`Private`datadropclientcache[{
-                    "DatabinStats", 
-                    "DDa31c766535b-d589-4f89-ab01-7ecaf392b010"}], Except[
-                    Blank[Association]] -> {}, {0}], "EntryCount", 
-                    Missing[]], StandardForm]], "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"Short ID: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox["\"xHwJG9Ru\"", "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"UUID: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox[
-                 "\"DDa31c766535b-d589-4f89-ab01-7ecaf392b010\"", 
-                  "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"ShortURL: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox[
-                  
-                  TemplateBox[{
-                   "\"https://wolfr.am/xHwJG9Ru\"", 
-                    "https://wolfr.am/xHwJG9Ru"}, "HyperlinkURL"], 
-                  "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"Short ID: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox["\"xHwJG9Ru\"", "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"UUID: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox[
-                 "\"DDa31c766535b-d589-4f89-ab01-7ecaf392b010\"", 
-                  "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"ShortURL: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox[
-                  
-                  TemplateBox[{
-                   "\"https://wolfr.am/xHwJG9Ru\"", 
-                    "https://wolfr.am/xHwJG9Ru"}, "HyperlinkURL"], 
-                  "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"Creator: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox["\"dboliske@gmail.com\"", "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"Owner: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox["\"dboliske@gmail.com\"", "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"Creation date: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox["\"Mon 17 Sep 2018 12:09:28\"", "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"Latest date: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox[
-                  DynamicBox[
-                   ToBoxes[
-                    Replace[
-                    Lookup[
-                    Replace[
-                    
-                    DataDropClient`Private`datadropclientcache[{
-                    "DatabinLatest", 
-                    "DDa31c766535b-d589-4f89-ab01-7ecaf392b010"}], Except[
-                    Blank[Association]] -> {}, {0}], "Timestamp", 
-                    Missing[]], Pattern[DataDropClient`Private`date, 
-                    Blank[DateObject]] :> 
-                    DateString[DataDropClient`Private`date], {0}], 
-                    StandardForm]], "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"Size: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox[
-                  DynamicBox[
-                   ToBoxes[
-                    (If[
-                    NumberQ[#], 
-                    Round[#, 0.1], #]& )[
-                    Lookup[
-                    Replace[
-                    
-                    DataDropClient`Private`datadropclientcache[{
-                    "DatabinStats", 
-                    "DDa31c766535b-d589-4f89-ab01-7ecaf392b010"}], Except[
-                    Blank[Association]] -> {}, {0}], "Size", 
-                    Missing[]]], StandardForm]], "SummaryItem"]}]}, {
-               RowBox[{
-                 TagBox["\"Latest: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox[
-                  DynamicBox[
-                   ToBoxes[
-                    Lookup[
-                    Replace[
-                    
-                    DataDropClient`Private`datadropclientcache[{
-                    "DatabinLatest", 
-                    "DDa31c766535b-d589-4f89-ab01-7ecaf392b010"}], Except[
-                    Blank[Association]] -> {}, {0}], "Data", 
-                    Missing[]], StandardForm]], "SummaryItem"]}]}}, 
-             GridBoxAlignment -> {
-              "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
-             False, GridBoxItemSize -> {
-              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-             GridBoxSpacings -> {"Columns" -> {{2}}, "Rows" -> {{Automatic}}},
-              BaseStyle -> {
-              ShowStringCharacters -> False, NumberMarks -> False, 
-               PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
-          GridBoxAlignment -> {"Rows" -> {{Top}}}, AutoDelete -> False, 
-          GridBoxItemSize -> {
-           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-          BaselinePosition -> {1, 1}]}, 
-       Dynamic[Typeset`open$$], ImageSize -> Automatic]},
-     "SummaryPanel"],
-    DynamicModuleValues:>{}], "]"}],
-  Databin["xHwJG9Ru"],
-  Editable->False,
-  SelectWithContents->True,
-  Selectable->False]], "Output",
- CellChangeTimes->{3.746192969387472*^9},
- CellLabel->"Out[41]=",ExpressionUUID->"376f5775-f0d1-4bcc-b9e0-cc5d62709170"]
-}, Open  ]],
-
 Cell["\<\
 Once the Databin has been created, modify ProcessorCode.wl, PieCharts.wl, \
 SentimentHistogram.wl, and SentimentListPlot.wl to use the correct Short ID.\
-\>", "Text",
- CellChangeTimes->{{3.746192999723572*^9, 
-  3.746193056329021*^9}},ExpressionUUID->"596e6792-5cc5-4a29-a6d1-\
-f45ea1ed1317"]
+\>", "Text",ExpressionUUID->"596e6792-5cc5-4a29-a6d1-f45ea1ed1317"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["2. Upload Packages to System Directory", "Subsection",
- CellChangeTimes->{{3.746193095947402*^9, 
-  3.746193108739265*^9}},ExpressionUUID->"9c08469f-702c-4d13-b7a2-\
-e915adab6e74"],
+Cell["2. Upload Packages to System Directory", "Subsection",ExpressionUUID->"9c08469f-702c-4d13-b7a2-e915adab6e74"],
 
 Cell["\<\
 All the packages that are required for this system to work need to be \
@@ -359,10 +55,7 @@ quickly copy all of the local files to a folder on the cloud called \
 \[OpenCurlyDoubleQuote]TwitterAnalysis\[CloseCurlyDoubleQuote] since that is \
 what I defined the directory to be in the packages. You are welcome to change \
 this, just make sure that the correct directory appears in all the packages.\
-\>", "Text",
- CellChangeTimes->{{3.746193111103464*^9, 
-  3.7461932023879023`*^9}},ExpressionUUID->"8b0e8466-9710-4876-bda7-\
-26a99687bd12"],
+\>", "Text",ExpressionUUID->"8b0e8466-9710-4876-bda7-26a99687bd12"],
 
 Cell[BoxData[
  RowBox[{"Map", "[", 
@@ -382,19 +75,13 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{
         RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<Packages\>\""}], 
-       "}"}], "]"}], ",", "Infinity"}], "]"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.746193214592935*^9, 3.746193257194909*^9}, {
-  3.746193322039249*^9, 3.746193389969171*^9}, {3.7461968972950697`*^9, 
-  3.746196921182303*^9}},ExpressionUUID->"3c2cfd93-1821-415e-907d-\
-39c00a71f57c"]
+       "}"}], "]"}], ",", "Infinity"}], "]"}]}], "]"}]], "Input",ExpressionUUI\
+D->"3c2cfd93-1821-415e-907d-39c00a71f57c"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["3. Deploy Twitter Tokens", "Subsection",
- CellChangeTimes->{{3.746193405995652*^9, 
-  3.746193422545425*^9}},ExpressionUUID->"806205cf-e855-49f0-b8ba-\
-d1907831339a"],
+Cell["3. Deploy Twitter Tokens", "Subsection",ExpressionUUID->"806205cf-e855-49f0-b8ba-d1907831339a"],
 
 Cell["\<\
 The whole system is built around calling the Twitter search API. To do this, \
@@ -402,10 +89,7 @@ you need to have developer tokens for Twitter that are accessible by your \
 ReaperTask. The location of the tokens is specified in ReaperCode.wl, but can \
 be anywhere on the cloud as long as the paths are correct. To deploy tokens \
 to the default location, evaluate the following:\
-\>", "Text",
- CellChangeTimes->{{3.7461934240290422`*^9, 
-  3.746193517427412*^9}},ExpressionUUID->"2f2e2db3-319f-46f8-9a25-\
-aea2c9ccb173"],
+\>", "Text",ExpressionUUID->"2f2e2db3-319f-46f8-9a25-aea2c9ccb173"],
 
 Cell[BoxData[
  RowBox[{"CloudPut", "[", 
@@ -417,10 +101,7 @@ Cell[BoxData[
      RowBox[{"\"\<OAuthToken\>\"", "\[Rule]", "\"\<XXXX\>\""}], ",", 
      RowBox[{"\"\<OAuthTokenSecret\>\"", "\[Rule]", "\"\<XXXX\>\""}]}], 
     "|>"}], ",", "\"\<TwitterAnalysis/AccessTokens.wl\>\""}], "]"}]], "Input",\
-
- CellChangeTimes->{{3.746193525209682*^9, 
-  3.746193587293446*^9}},ExpressionUUID->"2bfc648c-6009-4687-97ec-\
-7460e74f090b"],
+ExpressionUUID->"2bfc648c-6009-4687-97ec-7460e74f090b"],
 
 Cell[TextData[{
  "Note: you need to replace \[OpenCurlyDoubleQuote]XXXX\
@@ -428,18 +109,12 @@ Cell[TextData[{
  StyleBox["your",
   FontSlant->"Italic"],
  " tokens."
-}], "Text",
- CellChangeTimes->{{3.7461935940579767`*^9, 
-  3.746193607699987*^9}},ExpressionUUID->"4a376d35-2772-4c04-a0e7-\
-1284a606ff24"]
+}], "Text",ExpressionUUID->"4a376d35-2772-4c04-a0e7-1284a606ff24"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["4. Deploy ReaperTask", "Subsection",
- CellChangeTimes->{{3.746193637132221*^9, 
-  3.746193641699952*^9}},ExpressionUUID->"13a1a47e-26ee-4d42-8087-\
-4121ce2b7fe8"],
+Cell["4. Deploy ReaperTask", "Subsection",ExpressionUUID->"13a1a47e-26ee-4d42-8087-4121ce2b7fe8"],
 
 Cell[BoxData[
  RowBox[{"CloudDeploy", "[", "\n", "\t", 
@@ -452,17 +127,12 @@ Cell[BoxData[
      RowBox[{"NotificationFunction", "\[Rule]", "None"}]}], "\n", "\t", "]"}],
     ",", "\n", "\t", "\"\<TwitterAnalysis/Tasks/reaper.task\>\""}], "\n", 
   "]"}]], "Input",
- CellChangeTimes->{{3.7461936601012087`*^9, 3.7461936877404757`*^9}},
  CellLabel->"In[51]:=",ExpressionUUID->"8d39505a-91e2-423f-b9eb-82e2f24635f6"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["5. Deploy ProcessorTask", "Subsection",
- CellChangeTimes->{{3.746193637132221*^9, 3.746193641699952*^9}, {
-  3.746193698716963*^9, 
-  3.7461937021458893`*^9}},ExpressionUUID->"11837b66-c054-45c2-af72-\
-48953d18cf28"],
+Cell["5. Deploy ProcessorTask", "Subsection",ExpressionUUID->"11837b66-c054-45c2-af72-48953d18cf28"],
 
 Cell[BoxData[
  RowBox[{"CloudDeploy", "[", "\n", "\t", 
@@ -475,16 +145,12 @@ Cell[BoxData[
      RowBox[{"NotificationFunction", "\[Rule]", "None"}]}], "\n", "\t", "]"}],
     ",", "\n", "\t", "\"\<TwitterAnalysis/Tasks/processor.task\>\""}], "\n", 
   "]"}]], "Input",
- CellChangeTimes->{{3.7461936601012087`*^9, 3.746193709348569*^9}},
  CellLabel->"In[53]:=",ExpressionUUID->"1410d027-e0ae-47d1-8109-e1b44bd1f540"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["6. Deploy Graphics", "Subsection",
- CellChangeTimes->{{3.746193787332802*^9, 
-  3.7461937966917562`*^9}},ExpressionUUID->"d6c06c9d-22d8-44a5-9be1-\
-be77af641279"],
+Cell["6. Deploy Graphics", "Subsection",ExpressionUUID->"d6c06c9d-22d8-44a5-9be1-be77af641279"],
 
 Cell[BoxData[
  RowBox[{"CloudDeploy", "[", 
@@ -497,9 +163,6 @@ Cell[BoxData[
        "\"\<TwitterAnalysis/Packages/Graphics/SentimentHistogram.wl\>\"", 
        "]"}], "]"}], ",", "\"\<Hourly\>\"", ",", "\"\<PNG\>\""}], "]"}], ",", 
    "\"\<TwitterAnalysis/Graphics/SentimentHistogram\>\""}], "]"}]], "Input",
- CellChangeTimes->{{3.746188909718597*^9, 3.746188954490678*^9}, {
-  3.746193850868175*^9, 3.746193852086925*^9}, {3.7461939042778873`*^9, 
-  3.746193923158412*^9}, {3.7461961227648973`*^9, 3.746196140720334*^9}},
  CellLabel->"In[58]:=",ExpressionUUID->"435f5e27-4238-46ff-a685-4c632ae8805f"],
 
 Cell[BoxData[
@@ -513,10 +176,6 @@ Cell[BoxData[
        "\"\<TwitterAnalysis/Packages/Graphics/SentimentListPlot.wl\>\"", 
        "]"}], "]"}], ",", "\"\<Hourly\>\"", ",", "\"\<PNG\>\""}], "]"}], ",", 
    "\"\<TwitterAnalysis/Graphics/SentimentListPlot\>\""}], "]"}]], "Input",
- CellChangeTimes->{{3.746188909718597*^9, 3.746188954490678*^9}, {
-   3.7461898941929607`*^9, 3.746189900041347*^9}, 3.746193856080834*^9, {
-   3.746193911707631*^9, 3.746193927585114*^9}, {3.746196148701523*^9, 
-   3.7461961647415648`*^9}},
  CellLabel->"In[60]:=",ExpressionUUID->"1d5601d6-83ae-4140-8f57-32d8d4e4fcab"],
 
 Cell[BoxData[
@@ -530,23 +189,113 @@ Cell[BoxData[
        "\"\<TwitterAnalysis/Packages/Graphics/PieCharts.wl\>\"", "]"}], "]"}],
       ",", "\"\<Hourly\>\"", ",", "\"\<PNG\>\""}], "]"}], ",", 
    "\"\<TwitterAnalysis/Graphics/PieCharts\>\""}], "]"}]], "Input",
- CellChangeTimes->{{3.746188909718597*^9, 3.746188954490678*^9}, {
-   3.7461898941929607`*^9, 3.746189900041347*^9}, {3.746190393555195*^9, 
-   3.7461903997068033`*^9}, 3.746193857339581*^9, {3.746193913259709*^9, 
-   3.746193930011488*^9}, {3.746196170780703*^9, 3.746196184776431*^9}},
  CellLabel->"In[62]:=",ExpressionUUID->"564796b9-93dc-4ee7-9910-922dc1d8acb8"]
-}, Open  ]],
+}, Closed]],
 
-Cell["7. Deploy Dashboard Notebook", "Subsection",
- CellChangeTimes->{{3.746193802600556*^9, 
-  3.7461938090186043`*^9}},ExpressionUUID->"36fcd48b-acde-4e29-bff2-\
-598ddc51cbc7"]
+Cell[CellGroupData[{
+
+Cell["7. Deploy Dashboard", "Subsection",ExpressionUUID->"36fcd48b-acde-4e29-bff2-598ddc51cbc7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Delayed", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Get", "[", 
+      RowBox[{
+      "CloudObject", "[", 
+       "\"\<TwitterAnalysis/Utilities/TwitterStyling.wl\>\"", "]"}], "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Notebook", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Cell", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"BoxData", "[", "\[IndentingNewLine]", 
+            RowBox[{"ToBoxes", "[", "\[IndentingNewLine]", 
+             RowBox[{"ImageCrop", "[", "\[IndentingNewLine]", 
+              RowBox[{"ImportString", "[", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"URLRead", "[", 
+                 RowBox[{
+                  RowBox[{
+                  "CloudObject", "[", 
+                   "\"\<TwitterAnalysis/Graphics/SentimentHistogram\>\"", 
+                   "]"}], ",", "\"\<Body\>\""}], "]"}], ",", 
+                "\[IndentingNewLine]", "\"\<PNG\>\""}], "\[IndentingNewLine]",
+                "]"}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+             "]"}], "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+           "\"\<Output\>\""}], "\[IndentingNewLine]", "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Cell", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"BoxData", "[", "\[IndentingNewLine]", 
+            RowBox[{"ToBoxes", "[", "\[IndentingNewLine]", 
+             RowBox[{"ImageCrop", "[", "\[IndentingNewLine]", 
+              RowBox[{"ImportString", "[", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"URLRead", "[", 
+                 RowBox[{
+                  RowBox[{
+                  "CloudObject", "[", 
+                   "\"\<TwitterAnalysis/Graphics/SentimentListPlot\>\"", 
+                   "]"}], ",", "\"\<Body\>\""}], "]"}], ",", 
+                "\[IndentingNewLine]", "\"\<PNG\>\""}], "\[IndentingNewLine]",
+                "]"}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+             "]"}], "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+           "\"\<Output\>\""}], "\[IndentingNewLine]", "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Cell", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"BoxData", "[", "\[IndentingNewLine]", 
+            RowBox[{"ToBoxes", "[", "\[IndentingNewLine]", 
+             RowBox[{"ImageCrop", "[", "\[IndentingNewLine]", 
+              RowBox[{"ImportString", "[", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"URLRead", "[", 
+                 RowBox[{
+                  RowBox[{
+                  "CloudObject", "[", 
+                   "\"\<TwitterAnalysis/Graphics/PieCharts\>\"", "]"}], ",", 
+                  "\"\<Body\>\""}], "]"}], ",", "\[IndentingNewLine]", 
+                "\"\<PNG\>\""}], "\[IndentingNewLine]", "]"}], 
+              "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], 
+            "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+           "\"\<Output\>\""}], "\[IndentingNewLine]", "]"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Background", "\[Rule]", 
+        RowBox[{"BackgroundColor", "[", "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], 
+      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], ",", 
+   "\[IndentingNewLine]", "\"\<TwitterAnalysis/Dashboard.nb\>\""}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellLabel->"In[34]:=",ExpressionUUID->"7c53e8f1-177c-4e6b-b4c8-aa3faae5134d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TemplateBox[{
+    "\"https://www.wolframcloud.com/objects/dylanb/TwitterAnalysis/Dashboard.\
+nb\"","https://www.wolframcloud.com/objects/dylanb/TwitterAnalysis/Dashboard.\
+nb"},
+    "HyperlinkURL"], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/dylanb/TwitterAnalysis/Dashboard.nb"],
+  
+  SelectWithContents->True]], "Output",
+ CellLabel->"Out[34]=",ExpressionUUID->"43ccef46-fa34-4a69-a4fa-007e9fd2d802"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]]
 },
-WindowSize->{720, 802},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
-FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
-2018)",
+WindowSize->{958, 1027},
+WindowMargins->{{1, Automatic}, {1, Automatic}},
+WindowStatusArea->None,
+TrackCellChangeTimes->False,
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 7, 2018)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -561,42 +310,45 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 163, 3, 67, "Section",ExpressionUUID->"cc048347-7bdc-4c3e-a84d-9e92f9ee8cb8"],
+Cell[580, 22, 92, 0, 68, "Section",ExpressionUUID->"cc048347-7bdc-4c3e-a84d-9e92f9ee8cb8"],
 Cell[CellGroupData[{
-Cell[768, 29, 164, 3, 54, "Subsection",ExpressionUUID->"c73da20d-36fe-4caa-acf4-0e63d25b795e"],
-Cell[935, 34, 317, 7, 58, "Text",ExpressionUUID->"02101a3b-6d2f-4919-a10f-2697ea859ed7"],
-Cell[CellGroupData[{
-Cell[1277, 45, 232, 5, 30, "Input",ExpressionUUID->"f4d4461a-90d1-477b-b56e-fbe4af3e46f7"],
-Cell[1512, 52, 13963, 283, 62, "Output",ExpressionUUID->"376f5775-f0d1-4bcc-b9e0-cc5d62709170"]
-}, Open  ]],
-Cell[15490, 338, 302, 6, 58, "Text",ExpressionUUID->"596e6792-5cc5-4a29-a6d1-f45ea1ed1317"]
+Cell[697, 26, 94, 0, 55, "Subsection",ExpressionUUID->"c73da20d-36fe-4caa-acf4-0e63d25b795e"],
+Cell[794, 28, 197, 3, 35, "Text",ExpressionUUID->"02101a3b-6d2f-4919-a10f-2697ea859ed7"],
+Cell[994, 33, 232, 5, 31, "Input",ExpressionUUID->"f4d4461a-90d1-477b-b56e-fbe4af3e46f7"],
+Cell[1229, 40, 231, 3, 58, "Text",ExpressionUUID->"596e6792-5cc5-4a29-a6d1-f45ea1ed1317"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[15829, 349, 186, 3, 38, "Subsection",ExpressionUUID->"9c08469f-702c-4d13-b7a2-e915adab6e74"],
-Cell[16018, 354, 606, 10, 127, "Text",ExpressionUUID->"8b0e8466-9710-4876-bda7-26a99687bd12"],
-Cell[16627, 366, 872, 22, 136, "Input",ExpressionUUID->"3c2cfd93-1821-415e-907d-39c00a71f57c"]
+Cell[1497, 48, 115, 0, 39, "Subsection",ExpressionUUID->"9c08469f-702c-4d13-b7a2-e915adab6e74"],
+Cell[1615, 50, 533, 7, 104, "Text",ExpressionUUID->"8b0e8466-9710-4876-bda7-26a99687bd12"],
+Cell[2151, 59, 706, 19, 55, "Input",ExpressionUUID->"3c2cfd93-1821-415e-907d-39c00a71f57c"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[17536, 393, 172, 3, 38, "Subsection",ExpressionUUID->"806205cf-e855-49f0-b8ba-d1907831339a"],
-Cell[17711, 398, 513, 9, 104, "Text",ExpressionUUID->"2f2e2db3-319f-46f8-9a25-aea2c9ccb173"],
-Cell[18227, 409, 577, 13, 73, "Input",ExpressionUUID->"2bfc648c-6009-4687-97ec-7460e74f090b"],
-Cell[18807, 424, 299, 9, 35, "Text",ExpressionUUID->"4a376d35-2772-4c04-a0e7-1284a606ff24"]
+Cell[2894, 83, 101, 0, 39, "Subsection",ExpressionUUID->"806205cf-e855-49f0-b8ba-d1907831339a"],
+Cell[2998, 85, 440, 6, 81, "Text",ExpressionUUID->"2f2e2db3-319f-46f8-9a25-aea2c9ccb173"],
+Cell[3441, 93, 506, 10, 55, "Input",ExpressionUUID->"2bfc648c-6009-4687-97ec-7460e74f090b"],
+Cell[3950, 105, 226, 6, 35, "Text",ExpressionUUID->"4a376d35-2772-4c04-a0e7-1284a606ff24"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[19143, 438, 168, 3, 38, "Subsection",ExpressionUUID->"13a1a47e-26ee-4d42-8087-4121ce2b7fe8"],
-Cell[19314, 443, 607, 12, 178, "Input",ExpressionUUID->"8d39505a-91e2-423f-b9eb-82e2f24635f6"]
+Cell[4213, 116, 97, 0, 39, "Subsection",ExpressionUUID->"13a1a47e-26ee-4d42-8087-4121ce2b7fe8"],
+Cell[4313, 118, 537, 11, 193, "Input",ExpressionUUID->"8d39505a-91e2-423f-b9eb-82e2f24635f6"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[19958, 460, 222, 4, 38, "Subsection",ExpressionUUID->"11837b66-c054-45c2-af72-48953d18cf28"],
-Cell[20183, 466, 611, 12, 178, "Input",ExpressionUUID->"1410d027-e0ae-47d1-8109-e1b44bd1f540"]
+Cell[4887, 134, 100, 0, 39, "Subsection",ExpressionUUID->"11837b66-c054-45c2-af72-48953d18cf28"],
+Cell[4990, 136, 543, 11, 193, "Input",ExpressionUUID->"1410d027-e0ae-47d1-8109-e1b44bd1f540"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[20831, 483, 168, 3, 38, "Subsection",ExpressionUUID->"d6c06c9d-22d8-44a5-9be1-be77af641279"],
-Cell[21002, 488, 693, 14, 115, "Input",ExpressionUUID->"435f5e27-4238-46ff-a685-4c632ae8805f"],
-Cell[21698, 504, 719, 15, 115, "Input",ExpressionUUID->"1d5601d6-83ae-4140-8f57-32d8d4e4fcab"],
-Cell[22420, 521, 747, 15, 94, "Input",ExpressionUUID->"564796b9-93dc-4ee7-9910-922dc1d8acb8"]
-}, Open  ]],
-Cell[23182, 539, 178, 3, 54, "Subsection",ExpressionUUID->"36fcd48b-acde-4e29-bff2-598ddc51cbc7"]
+Cell[5570, 152, 95, 0, 39, "Subsection",ExpressionUUID->"d6c06c9d-22d8-44a5-9be1-be77af641279"],
+Cell[5668, 154, 479, 11, 78, "Input",ExpressionUUID->"435f5e27-4238-46ff-a685-4c632ae8805f"],
+Cell[6150, 167, 477, 11, 78, "Input",ExpressionUUID->"1d5601d6-83ae-4140-8f57-32d8d4e4fcab"],
+Cell[6630, 180, 459, 11, 55, "Input",ExpressionUUID->"564796b9-93dc-4ee7-9910-922dc1d8acb8"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[7126, 196, 96, 0, 39, "Subsection",ExpressionUUID->"36fcd48b-acde-4e29-bff2-598ddc51cbc7"],
+Cell[CellGroupData[{
+Cell[7247, 200, 3739, 74, 1159, "Input",ExpressionUUID->"7c53e8f1-177c-4e6b-b4c8-aa3faae5134d"],
+Cell[10989, 276, 489, 12, 71, "Output",ExpressionUUID->"43ccef46-fa34-4a69-a4fa-007e9fd2d802"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]]
 }
 ]
