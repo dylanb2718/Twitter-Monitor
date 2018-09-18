@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-Module[{bin =Databin["xHwJG9Ru", All, "Sentiment"], data, quantiles},
+Module[{bin = Databin["Short ID", All, "Sentiment"], data, quantiles},
 	Get[CloudObject[FileNameJoin[{"TwitterAnalysis", "Packages", "Utilities", "TwitterStyling.wl"}]]];
 	data = TimeSeries[
 		List@@@Normal[

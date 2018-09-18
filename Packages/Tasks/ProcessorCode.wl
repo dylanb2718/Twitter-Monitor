@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-Block[{term = "starbucks", dir = "TwitterAnalysis", bin = Databin["xHwJG9Ru"]},
+Block[{term = "starbucks", dir = "TwitterAnalysis", bin = Databin["Short ID"]},
  Get[CloudObject[FileNameJoin[{dir, "Packages", "Utilities", "TwitterProcessor.wl"}]]];
  Do[
   Print[file];
