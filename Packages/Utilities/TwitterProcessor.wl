@@ -10,7 +10,7 @@ Begin["`Private`"];
 (* This function is used to process the raw data in different fields. *)
 processTweetData[{"created_at", date_}] := {Rule["Timestamp", TimeZoneConvert[DateObject[{date, {"DayNameShort", " ", "MonthNameShort", " ", "Day", " ", "Hour24", ":", "Minute", ":", "Second", " +0000 ", "Year"}}, TimeZone -> 0]]]}
 processTweetData[{"id", id_}] := {Rule["ID", id]}
-processTweetData[{"text", tweet_}] := {Rule["Tweet", ToString[tweet, CharacterEncoding->"ASCII"]], Rule["Sentiment", Replace[Classify["Sentiment"][tweet], {"Positive" -> 1, "Negative" -> -1, _ -> 0}]]}
+processTweetData[{"text", tweet_}] := {Rule["Tweet", ToString[tweet, CharacterEncoding->"ASCII"]], Rule["Sentiment", findSentiment[tweet]]}
 processTweetData[{"source", sourceLink_}] := {Rule["Source", sourceName[sourceLink]]}
 processTweetData[{"user", userData_}] := processUserData[userData]
 processTweetData[{"geo", Null}] := {}
@@ -23,11 +23,32 @@ processTweetData[{"retweet_count", count_}] := {Rule["Retweets", count]}
 processTweetData[{"favorite_count", count_}] := {Rule["Favorites", count]}
 processTweetData[{"lang", lang_}] := {Rule["Language", With[{l = Check[Interpreter["Language"][lang], lang]}, If[FailureQ[l], lang, l]]]}
 
+findSentiment[text_] := 
+If[Classify["Language", text] === Entity["Language", "English"],
+Times @@ ReplaceAll[
+List @@ Last[Normal[
+Sort[Classify["Sentiment", text, "Probabilities", ClassPriors -> <|"Positive" -> 0.5, "Negative" -> 0.5|>]]
+]], 
+{"Negative" -> -100, "Positive" -> 100}],
+0
+]
+
 formatLocation[loc_] := Quiet[Check[GeoPosition[loc], Missing[]]]
 
 processUserData[data_] := {Rule["User", <|"UserID" -> Lookup[data, "id"], "ScreenName" -> Lookup[data, "screen_name"], "Location" -> With[{loc = Quiet[Check[Interpreter["Location"][Lookup[data, "location"]], Missing[]]]}, If[FailureQ[loc], Missing[], loc]], "Followers" -> Lookup[data, "followers_count"]|>]}
 
-sourceName[name_] := Replace[StringCases[name, {">Twitter for " ~~ Shortest[source__] ~~ "<" :> source}], {{value_} :> value, {values__} :> First[values], {} :> None}]
+sourceName[name_] := 
+ With[{raw = 
+    Replace[StringCases[
+      name, {">" ~~ Shortest[source__] ~~ "<" :> 
+        source}], {{value_} :> value, {values__} :> 
+       First[values], {} :> None}]},
+  If[StringQ[raw],
+   StringReplace[
+    raw, {"Twitter for " -> "", "Twitter Web Client" -> "Web Client"}],
+   raw
+   ]
+  ]
 
 calculateLocation[data_] :=
  Module[{specific = Lookup[data, {"geo", "coordinates", "place"}]},
