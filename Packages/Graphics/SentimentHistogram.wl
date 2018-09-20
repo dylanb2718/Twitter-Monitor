@@ -1,13 +1,13 @@
 (* ::Package:: *)
 
-Module[{max, min, full, bin = Databin["Short ID"], data, dir = "TwitterAnalysis"},
+Module[{max, min, full, bin = Databin["xHwJG9Ru"], data, dir = "TwitterAnalysis"},
 	Get[CloudObject[FileNameJoin[{"TwitterAnalysis", "Packages", "Utilities", "TwitterStyling.wl"}]]];
 	data=Dataset[bin];
 	Column[{
 		GeoHistogram[
 			Association@@Map[
 				Rule[Lookup[#, "Location"], Lookup[#, "Sentiment"] * Max[Lookup[Lookup[#, "User"], "Followers"], 1]*Max[Lookup[#, "Retweets"], 1]] &,
-				Normal[data[Select[And[!MissingQ[#Location], #Language === Entity["Language","English"]] &]][All, {"Location", "Sentiment", "User", "Retweets"}]]
+				Normal[data[Select[!MissingQ[#Location]&]][All, {"Location", "Sentiment", "User", "Retweets"}]]
 			],
 			{"Hexagon", 100},
 			Function[{bins, counts},
@@ -18,6 +18,7 @@ Module[{max, min, full, bin = Databin["Short ID"], data, dir = "TwitterAnalysis"
 			],
 			ColorFunction -> Function[{i}, With[{x = (max - min)*i + min}, If[x == 0, TwitterStyling`DataColor[2], Blend[{TwitterStyling`DataColor[1], TwitterStyling`DataColor[3]}, 1 - (x + full)/(2 * full)]]]],
 			GeoBackground -> GeoStyling[{"CountryBorders", "Land" -> TwitterStyling`BackgroundColor[1], "Ocean" -> TwitterStyling`BackgroundColor[2], "Border" -> Directive[TwitterStyling`TextColor[1], Dotted, Thin]}],
+			GeoRange -> "World",
 			ImageSize -> Full,
 			PlotStyle -> Directive[EdgeForm[Directive[TwitterStyling`TextColor[1], Thickness[0.000075]]], Opacity[0.35]]
 		],
