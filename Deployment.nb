@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14228,        348]
-NotebookOptionsPosition[     11518,        293]
-NotebookOutlinePosition[     11904,        310]
-CellTagsIndexPosition[     11861,        307]
+NotebookDataLength[     22769,        561]
+NotebookOptionsPosition[     19768,        503]
+NotebookOutlinePosition[     20154,        520]
+CellTagsIndexPosition[     20111,        517]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -32,16 +32,36 @@ ProcessorTask as well as the graphics.\
 \>", "Text",ExpressionUUID->"02101a3b-6d2f-4919-a10f-2697ea859ed7"],
 
 Cell[BoxData[
- RowBox[{"CreateDatabin", "[", 
-  RowBox[{"<|", 
-   RowBox[{"\"\<Name\>\"", "\[Rule]", "\"\<TwitterSilo\>\""}], "|>"}], 
-  "]"}]], "Input",
- CellLabel->"In[41]:=",ExpressionUUID->"f4d4461a-90d1-477b-b56e-fbe4af3e46f7"],
+ RowBox[{"bin", " ", "=", " ", 
+  RowBox[{"CreateDatabin", "[", 
+   RowBox[{"<|", 
+    RowBox[{"\"\<Name\>\"", "\[Rule]", "\"\<Twitter Monitor Example\>\""}], 
+    "|>"}], "]"}]}]], "Input",ExpressionUUID->"f4d4461a-90d1-477b-b56e-\
+fbe4af3e46f7"],
+
+Cell[CellGroupData[{
+
+Cell["Emptying Databin", "Subsubsection",ExpressionUUID->"df253450-c964-4838-92f9-d2a98cd7f683"],
 
 Cell["\<\
-Once the Databin has been created, modify ProcessorCode.wl, PieCharts.wl, \
-SentimentHistogram.wl, and SentimentListPlot.wl to use the correct Short ID.\
-\>", "Text",ExpressionUUID->"596e6792-5cc5-4a29-a6d1-f45ea1ed1317"]
+Occasionally, mostly while testing, it may become necessary to empty out the \
+Databin, e.g. if the Databin becomes full, if you wish to use the same \
+Databin for a different term, or if you make custom changes to the Reaper or \
+Processor tasks.\
+\>", "Text",ExpressionUUID->"c4bc2b65-ab72-42c2-a9b3-a4bc7fe52648"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"bin", " ", "=", " ", 
+   RowBox[{"Databin", "[", "\"\<Short ID\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"DatabinRemove", "[", 
+  RowBox[{"bin", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"bin", "[", "\"\<EntryCount\>\"", "]"}]}], "}"}]}], 
+  "]"}]}], "Input",ExpressionUUID->"74a5d902-0211-4b63-be52-f3e05fb76f09"]
+}, Closed]]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -51,32 +71,98 @@ Cell["2. Upload Packages to System Directory", "Subsection",ExpressionUUID->"9c0
 Cell["\<\
 All the packages that are required for this system to work need to be \
 uploaded to the cloud in order for the system to work. The code below will \
-quickly copy all of the local files to a folder on the cloud called \
-\[OpenCurlyDoubleQuote]TwitterAnalysis\[CloseCurlyDoubleQuote] since that is \
-what I defined the directory to be in the packages. You are welcome to change \
-this, just make sure that the correct directory appears in all the packages.\
+quickly copy all of the local files to a folder on the cloud.\
 \>", "Text",ExpressionUUID->"8b0e8466-9710-4876-bda7-26a99687bd12"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"directory", " ", "=", " ", "\"\<Twitter-Monitor\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"term", " ", "=", " ", "\"\<#Twitter\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"id", " ", "=", " ", 
+   RowBox[{"bin", "[", "\"\<ShortID\>\"", "]"}]}], ";"}]}], "Input",
+ CellLabel->
+  "In[489]:=",ExpressionUUID->"58939b2a-25cb-47ef-b224-40b770a2ac12"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"DeployPackage", "[", 
+   RowBox[{"path_String", ",", "content_String"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"CloudExport", "[", 
+      RowBox[{
+      "\"\<\>\"", ",", "\"\<application/vnd.wolfram.mathematica.package\>\"", 
+       ",", 
+       RowBox[{"CloudObject", "[", "path", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"CloudEvaluate", "[", "\[IndentingNewLine]", 
+      RowBox[{"BinaryWrite", "[", 
+       RowBox[{"path", ",", 
+        RowBox[{"ToCharacterCode", "[", "content", "]"}]}], "]"}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"CloudObject", "[", "path", "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ConstructCloudPath", "[", 
+   RowBox[{"local_String", ",", "cloudDir_String"}], "]"}], ":=", 
+  RowBox[{"URLBuild", "[", 
+   RowBox[{"{", 
+    RowBox[{"cloudDir", ",", 
+     RowBox[{"StringReplace", "[", 
+      RowBox[{
+       RowBox[{"FileNameDrop", "[", 
+        RowBox[{"local", ",", 
+         RowBox[{"FileNameDepth", "[", 
+          RowBox[{"NotebookDirectory", "[", "]"}], "]"}]}], "]"}], ",", 
+       RowBox[{"\"\<\\\\\>\"", "\[Rule]", "\"\</\>\""}]}], "]"}]}], "}"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ConstructPackageContent", "[", 
+   RowBox[{
+   "path_String", ",", "binID_String", ",", "cloudDir_String", ",", 
+    "term_String"}], "]"}], ":=", 
+  RowBox[{"StringReplace", "[", 
+   RowBox[{
+    RowBox[{"Import", "[", 
+     RowBox[{"path", ",", "\"\<String\>\""}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\"\<<wolfram:slot id='short-id'/>\>\"", "\[Rule]", "binID"}], 
+      ",", 
+      RowBox[{"\"\<<wolfram:slot id='dir'/>\>\"", "\[Rule]", "cloudDir"}], 
+      ",", 
+      RowBox[{"\"\<<wolfram:slot id='term'/>\>\"", "\[Rule]", "term"}]}], 
+     "}"}]}], "]"}]}]}], "Input",
+ CellLabel->
+  "In[524]:=",ExpressionUUID->"6ea1abcf-cd89-41b3-87ab-192051ba02cf"],
 
 Cell[BoxData[
  RowBox[{"Map", "[", 
   RowBox[{
    RowBox[{
-    RowBox[{"CopyFile", "[", 
-     RowBox[{"#", ",", 
-      RowBox[{"CloudObject", "[", 
-       RowBox[{"StringReplace", "[", 
-        RowBox[{"#", ",", 
-         RowBox[{
-          RowBox[{"NotebookDirectory", "[", "]"}], "\[Rule]", 
-          "\"\<TwitterAnalysis/\>\""}]}], "]"}], "]"}]}], "]"}], "&"}], ",", 
+    RowBox[{"DeployPackage", "[", 
+     RowBox[{
+      RowBox[{"ConstructCloudPath", "[", 
+       RowBox[{"#", ",", "directory"}], "]"}], ",", 
+      RowBox[{"ConstructPackageContent", "[", 
+       RowBox[{"#", ",", "id", ",", "directory", ",", "term"}], "]"}]}], 
+     "]"}], "&"}], ",", 
    RowBox[{"FileNames", "[", 
     RowBox[{"\"\<*.wl\>\"", ",", 
      RowBox[{"FileNameJoin", "[", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<Packages\>\""}], 
-       "}"}], "]"}], ",", "Infinity"}], "]"}]}], "]"}]], "Input",ExpressionUUI\
-D->"3c2cfd93-1821-415e-907d-39c00a71f57c"]
+       "}"}], "]"}], ",", "Infinity"}], "]"}]}], "]"}]], "Input",
+ CellLabel->
+  "In[528]:=",ExpressionUUID->"ab6398e7-34fd-455b-a5b3-8a1d5da5e543"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -100,8 +186,11 @@ Cell[BoxData[
      RowBox[{"\"\<ConsumerSecret\>\"", "\[Rule]", "\"\<XXXX\>\""}], ",", 
      RowBox[{"\"\<OAuthToken\>\"", "\[Rule]", "\"\<XXXX\>\""}], ",", 
      RowBox[{"\"\<OAuthTokenSecret\>\"", "\[Rule]", "\"\<XXXX\>\""}]}], 
-    "|>"}], ",", "\"\<TwitterAnalysis/AccessTokens.wl\>\""}], "]"}]], "Input",\
-ExpressionUUID->"2bfc648c-6009-4687-97ec-7460e74f090b"],
+    "|>"}], ",", 
+   RowBox[{"URLBuild", "[", 
+    RowBox[{"{", 
+     RowBox[{"directory", ",", "\"\<AccessTokens.wl\>\""}], "}"}], "]"}]}], 
+  "]"}]], "Input",ExpressionUUID->"2bfc648c-6009-4687-97ec-7460e74f090b"],
 
 Cell[TextData[{
  "Note: you need to replace \[OpenCurlyDoubleQuote]XXXX\
@@ -121,13 +210,20 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"ScheduledTask", "[", "\n", "\t\t", 
     RowBox[{
-     RowBox[{
-     "Get", "[", "\"\<TwitterAnalysis/Packages/Tasks/ReaperCode.wl\>\"", 
-      "]"}], ",", "\n", "\t\t", "\"\<Hourly\>\"", ",", "\n", "\t\t", 
+     RowBox[{"Get", "[", 
+      RowBox[{"URLBuild", "[", 
+       RowBox[{"{", 
+        RowBox[{"directory", ",", "\"\<Packages/Tasks/ReaperCode.wl\>\""}], 
+        "}"}], "]"}], "]"}], ",", "\n", "\t\t", 
+     RowBox[{"Quantity", "[", 
+      RowBox[{"6", ",", "\"\<Hours\>\""}], "]"}], ",", "\n", "\t\t", 
      RowBox[{"NotificationFunction", "\[Rule]", "None"}]}], "\n", "\t", "]"}],
-    ",", "\n", "\t", "\"\<TwitterAnalysis/Tasks/reaper.task\>\""}], "\n", 
-  "]"}]], "Input",
- CellLabel->"In[51]:=",ExpressionUUID->"8d39505a-91e2-423f-b9eb-82e2f24635f6"]
+    ",", "\n", "\t", 
+   RowBox[{"URLBuild", "[", 
+    RowBox[{"{", 
+     RowBox[{"directory", ",", "\"\<Tasks/reaper.task\>\""}], "}"}], "]"}]}], 
+  "\n", "]"}]], "Input",ExpressionUUID->"8d39505a-91e2-423f-b9eb-\
+82e2f24635f6"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -139,13 +235,20 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"ScheduledTask", "[", "\n", "\t\t", 
     RowBox[{
-     RowBox[{
-     "Get", "[", "\"\<TwitterAnalysis/Packages/Tasks/ProcessorCode.wl\>\"", 
-      "]"}], ",", "\n", "\t\t", "\"\<Hourly\>\"", ",", "\n", "\t\t", 
+     RowBox[{"Get", "[", 
+      RowBox[{"URLBuild", "[", 
+       RowBox[{"{", 
+        RowBox[{"directory", ",", "\"\<Packages/Tasks/ProcessorCode.wl\>\""}],
+         "}"}], "]"}], "]"}], ",", "\n", "\t\t", 
+     RowBox[{"Quantity", "[", 
+      RowBox[{"6", ",", "\"\<Hours\>\""}], "]"}], ",", "\n", "\t\t", 
      RowBox[{"NotificationFunction", "\[Rule]", "None"}]}], "\n", "\t", "]"}],
-    ",", "\n", "\t", "\"\<TwitterAnalysis/Tasks/processor.task\>\""}], "\n", 
-  "]"}]], "Input",
- CellLabel->"In[53]:=",ExpressionUUID->"1410d027-e0ae-47d1-8109-e1b44bd1f540"]
+    ",", "\n", "\t", 
+   RowBox[{"URLBuild", "[", 
+    RowBox[{"{", 
+     RowBox[{"directory", ",", "\"\<Tasks/processor.task\>\""}], "}"}], 
+    "]"}]}], "\n", "]"}]], "Input",ExpressionUUID->"1410d027-e0ae-47d1-8109-\
+e1b44bd1f540"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -158,12 +261,19 @@ Cell[BoxData[
    RowBox[{"AutoRefreshed", "[", 
     RowBox[{
      RowBox[{"Get", "[", 
-      RowBox[{
-      "CloudObject", "[", 
-       "\"\<TwitterAnalysis/Packages/Graphics/SentimentHistogram.wl\>\"", 
+      RowBox[{"CloudObject", "[", 
+       RowBox[{"URLBuild", "[", 
+        RowBox[{"{", 
+         RowBox[{
+         "directory", ",", 
+          "\"\<Packages/Graphics/SentimentHistogram.wl\>\""}], "}"}], "]"}], 
        "]"}], "]"}], ",", "\"\<Hourly\>\"", ",", "\"\<PNG\>\""}], "]"}], ",", 
-   "\"\<TwitterAnalysis/Graphics/SentimentHistogram\>\""}], "]"}]], "Input",
- CellLabel->"In[58]:=",ExpressionUUID->"435f5e27-4238-46ff-a685-4c632ae8805f"],
+   
+   RowBox[{"URLBuild", "[", 
+    RowBox[{"{", 
+     RowBox[{"directory", ",", "\"\<Graphics/SentimentHistogram\>\""}], "}"}],
+     "]"}]}], "]"}]], "Input",ExpressionUUID->"435f5e27-4238-46ff-a685-\
+4c632ae8805f"],
 
 Cell[BoxData[
  RowBox[{"CloudDeploy", "[", 
@@ -171,12 +281,18 @@ Cell[BoxData[
    RowBox[{"AutoRefreshed", "[", 
     RowBox[{
      RowBox[{"Get", "[", 
-      RowBox[{
-      "CloudObject", "[", 
-       "\"\<TwitterAnalysis/Packages/Graphics/SentimentListPlot.wl\>\"", 
-       "]"}], "]"}], ",", "\"\<Hourly\>\"", ",", "\"\<PNG\>\""}], "]"}], ",", 
-   "\"\<TwitterAnalysis/Graphics/SentimentListPlot\>\""}], "]"}]], "Input",
- CellLabel->"In[60]:=",ExpressionUUID->"1d5601d6-83ae-4140-8f57-32d8d4e4fcab"],
+      RowBox[{"CloudObject", "[", 
+       RowBox[{"URLBuild", "[", 
+        RowBox[{"{", 
+         RowBox[{
+         "directory", ",", "\"\<Packages/Graphics/SentimentListPlot.wl\>\""}],
+          "}"}], "]"}], "]"}], "]"}], ",", "\"\<Hourly\>\"", ",", 
+     "\"\<PNG\>\""}], "]"}], ",", 
+   RowBox[{"URLBuild", "[", 
+    RowBox[{"{", 
+     RowBox[{"directory", ",", "\"\<Graphics/SentimentListPlot\>\""}], "}"}], 
+    "]"}]}], "]"}]], "Input",ExpressionUUID->"1d5601d6-83ae-4140-8f57-\
+32d8d4e4fcab"],
 
 Cell[BoxData[
  RowBox[{"CloudDeploy", "[", 
@@ -184,115 +300,209 @@ Cell[BoxData[
    RowBox[{"AutoRefreshed", "[", 
     RowBox[{
      RowBox[{"Get", "[", 
-      RowBox[{
-      "CloudObject", "[", 
-       "\"\<TwitterAnalysis/Packages/Graphics/PieCharts.wl\>\"", "]"}], "]"}],
-      ",", "\"\<Hourly\>\"", ",", "\"\<PNG\>\""}], "]"}], ",", 
-   "\"\<TwitterAnalysis/Graphics/PieCharts\>\""}], "]"}]], "Input",
- CellLabel->"In[62]:=",ExpressionUUID->"564796b9-93dc-4ee7-9910-922dc1d8acb8"]
+      RowBox[{"CloudObject", "[", 
+       RowBox[{"URLBuild", "[", 
+        RowBox[{"{", 
+         RowBox[{"directory", ",", "\"\<Packages/Graphics/PieCharts.wl\>\""}],
+          "}"}], "]"}], "]"}], "]"}], ",", "\"\<Hourly\>\"", ",", 
+     "\"\<PNG\>\""}], "]"}], ",", 
+   RowBox[{"URLBuild", "[", 
+    RowBox[{"{", 
+     RowBox[{"directory", ",", "\"\<Graphics/PieCharts\>\""}], "}"}], "]"}]}],
+   "]"}]], "Input",ExpressionUUID->"564796b9-93dc-4ee7-9910-922dc1d8acb8"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["7. Deploy Dashboard", "Subsection",ExpressionUUID->"36fcd48b-acde-4e29-bff2-598ddc51cbc7"],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"CloudDeploy", "[", "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"Delayed", "[", "\[IndentingNewLine]", 
+   RowBox[{"AutoRefreshed", "[", "\[IndentingNewLine]", 
     RowBox[{
-     RowBox[{"Get", "[", 
+     RowBox[{"Module", "[", 
       RowBox[{
-      "CloudObject", "[", 
-       "\"\<TwitterAnalysis/Utilities/TwitterStyling.wl\>\"", "]"}], "]"}], 
-     ";", "\[IndentingNewLine]", 
-     RowBox[{"Notebook", "[", 
-      RowBox[{
-       RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"{", 
         RowBox[{
-         RowBox[{"Cell", "[", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"BoxData", "[", "\[IndentingNewLine]", 
-            RowBox[{"ToBoxes", "[", "\[IndentingNewLine]", 
-             RowBox[{"ImageCrop", "[", "\[IndentingNewLine]", 
-              RowBox[{"ImportString", "[", "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"URLRead", "[", 
-                 RowBox[{
+         RowBox[{"bin", "=", 
+          RowBox[{"Databin", "[", "id", "]"}]}], ",", 
+         RowBox[{"dir", "=", "directory"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Get", "[", 
+         RowBox[{"CloudObject", "[", 
+          RowBox[{"FileNameJoin", "[", 
+           RowBox[{"{", 
+            RowBox[{
+            "dir", ",", "\"\<Packages\>\"", ",", "\"\<Utilities\>\"", ",", 
+             "\"\<TwitterStyling.wl\>\""}], "}"}], "]"}], "]"}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Framed", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Grid", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"{", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Column", "[", 
+                RowBox[{
+                 RowBox[{"{", "\[IndentingNewLine]", 
                   RowBox[{
-                  "CloudObject", "[", 
-                   "\"\<TwitterAnalysis/Graphics/SentimentHistogram\>\"", 
-                   "]"}], ",", "\"\<Body\>\""}], "]"}], ",", 
-                "\[IndentingNewLine]", "\"\<PNG\>\""}], "\[IndentingNewLine]",
-                "]"}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
-             "]"}], "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
-           "\"\<Output\>\""}], "\[IndentingNewLine]", "]"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"Cell", "[", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"BoxData", "[", "\[IndentingNewLine]", 
-            RowBox[{"ToBoxes", "[", "\[IndentingNewLine]", 
-             RowBox[{"ImageCrop", "[", "\[IndentingNewLine]", 
-              RowBox[{"ImportString", "[", "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"URLRead", "[", 
-                 RowBox[{
+                   RowBox[{"Get", "[", 
+                    RowBox[{"CloudObject", "[", 
+                    RowBox[{"URLBuild", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "dir", ",", 
+                    "\"\<Packages/Graphics/SentimentHistogram.wl\>\""}], 
+                    "}"}], "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+                   RowBox[{"Get", "[", 
+                    RowBox[{"CloudObject", "[", 
+                    RowBox[{"URLBuild", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "dir", ",", 
+                    "\"\<Packages/Graphics/SentimentListPlot.wl\>\""}], "}"}],
+                     "]"}], "]"}], "]"}]}], "\[IndentingNewLine]", "}"}], ",",
+                  "\[IndentingNewLine]", 
+                 RowBox[{"Alignment", "\[Rule]", "Left"}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"Spacings", "\[Rule]", "0"}]}], 
+                "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"Column", "[", 
+                RowBox[{
+                 RowBox[{"{", "\[IndentingNewLine]", 
                   RowBox[{
-                  "CloudObject", "[", 
-                   "\"\<TwitterAnalysis/Graphics/SentimentListPlot\>\"", 
-                   "]"}], ",", "\"\<Body\>\""}], "]"}], ",", 
-                "\[IndentingNewLine]", "\"\<PNG\>\""}], "\[IndentingNewLine]",
-                "]"}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
-             "]"}], "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
-           "\"\<Output\>\""}], "\[IndentingNewLine]", "]"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"Cell", "[", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"BoxData", "[", "\[IndentingNewLine]", 
-            RowBox[{"ToBoxes", "[", "\[IndentingNewLine]", 
-             RowBox[{"ImageCrop", "[", "\[IndentingNewLine]", 
-              RowBox[{"ImportString", "[", "\[IndentingNewLine]", 
+                   RowBox[{"Get", "[", 
+                    RowBox[{"CloudObject", "[", 
+                    RowBox[{"URLBuild", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "dir", ",", "\"\<Packages/Graphics/DateHeatmap.wl\>\""}], 
+                    "}"}], "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+                   RowBox[{"Column", "[", 
+                    RowBox[{
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Get", "[", 
+                    RowBox[{"CloudObject", "[", 
+                    RowBox[{"URLBuild", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "dir", ",", "\"\<Packages/Graphics/SourcePie.wl\>\""}], 
+                    "}"}], "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Get", "[", 
+                    RowBox[{"CloudObject", "[", 
+                    RowBox[{"URLBuild", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "dir", ",", "\"\<Packages/Graphics/LanguagePie.wl\>\""}], 
+                    "}"}], "]"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+                    "}"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Alignment", "\[Rule]", "Left"}]}], 
+                    "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+                   
+                   RowBox[{"Framed", "[", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Column", "[", 
+                    RowBox[{
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Style", "[", 
+                    RowBox[{
+                    RowBox[{"bin", "[", "\"\<Name\>\"", "]"}], ",", "24"}], 
+                    "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Style", "[", 
+                    RowBox[{
+                    RowBox[{"StringRiffle", "[", 
+                    RowBox[{
+                    RowBox[{"Map", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"DateString", "[", 
+                    RowBox[{"#", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "\"\<MonthNameShort\>\"", ",", "\"\<. \>\"", ",", 
+                    "\"\<Day\>\"", ",", "\"\< \>\"", ",", "\"\<Hour24\>\"", 
+                    ",", "\"\<AMPM\>\""}], "}"}]}], "]"}], "&"}], ",", 
+                    RowBox[{"bin", "[", "\"\<TimeInterval\>\"", "]"}]}], 
+                    "]"}], ",", "\"\< - \>\""}], "]"}], ",", "18"}], "]"}], 
+                    ",", "\[IndentingNewLine]", 
+                    RowBox[{"Style", "[", 
+                    RowBox[{
+                    RowBox[{"StringJoin", "[", 
+                    RowBox[{"\"\<Tweets: \>\"", ",", 
+                    RowBox[{"ToString", "@", 
+                    RowBox[{"bin", "[", "\"\<EntryCount\>\"", "]"}]}]}], 
+                    "]"}], ",", "16"}], "]"}]}], "\[IndentingNewLine]", "}"}],
+                     ",", "\[IndentingNewLine]", 
+                    RowBox[{"Alignment", "\[Rule]", "Center"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"BaseStyle", "\[Rule]", 
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"FontColor", "\[Rule]", 
+                    RowBox[{"TwitterStyling`TextColor", "[", "]"}]}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"FontFamily", "\[Rule]", 
+                    RowBox[{"TwitterStyling`TextFont", "[", "]"}]}], ","}], 
+                    "\[IndentingNewLine]", "}"}]}]}], "\[IndentingNewLine]", 
+                    "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Alignment", "\[Rule]", "Center"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"Background", "\[Rule]", 
+                    RowBox[{"TwitterStyling`BackgroundColor", "[", "]"}]}], 
+                    ",", "\[IndentingNewLine]", 
+                    RowBox[{"FrameMargins", "\[Rule]", "15"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"FrameStyle", "\[Rule]", "None"}]}], 
+                    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+                  "}"}], ",", "\[IndentingNewLine]", 
+                 RowBox[{"Alignment", "\[Rule]", "Center"}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"Background", "\[Rule]", 
+                  RowBox[{"TwitterStyling`BackgroundColor", "[", "]"}]}], ",",
+                  "\[IndentingNewLine]", 
+                 RowBox[{"Spacings", "\[Rule]", "0"}]}], 
+                "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "}"}], 
+             "}"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"Alignment", "\[Rule]", "Top"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Background", "\[Rule]", 
+             RowBox[{"TwitterStyling`BackgroundColor", "[", "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"ItemSize", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{"{", 
                RowBox[{
-                RowBox[{"URLRead", "[", 
-                 RowBox[{
-                  RowBox[{
-                  "CloudObject", "[", 
-                   "\"\<TwitterAnalysis/Graphics/PieCharts\>\"", "]"}], ",", 
-                  "\"\<Body\>\""}], "]"}], ",", "\[IndentingNewLine]", 
-                "\"\<PNG\>\""}], "\[IndentingNewLine]", "]"}], 
-              "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], 
-            "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
-           "\"\<Output\>\""}], "\[IndentingNewLine]", "]"}]}], 
-        "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
-       RowBox[{"Background", "\[Rule]", 
-        RowBox[{"BackgroundColor", "[", "]"}]}], ",", "\[IndentingNewLine]", 
-       RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], 
-      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], ",", 
-   "\[IndentingNewLine]", "\"\<TwitterAnalysis/Dashboard.nb\>\""}], 
-  "\[IndentingNewLine]", "]"}]], "Input",
- CellLabel->"In[34]:=",ExpressionUUID->"7c53e8f1-177c-4e6b-b4c8-aa3faae5134d"],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"CloudObject", "[", 
-   TemplateBox[{
-    "\"https://www.wolframcloud.com/objects/dylanb/TwitterAnalysis/Dashboard.\
-nb\"","https://www.wolframcloud.com/objects/dylanb/TwitterAnalysis/Dashboard.\
-nb"},
-    "HyperlinkURL"], "]"}],
-  CloudObject[
-  "https://www.wolframcloud.com/objects/dylanb/TwitterAnalysis/Dashboard.nb"],
-  
-  SelectWithContents->True]], "Output",
- CellLabel->"Out[34]=",ExpressionUUID->"43ccef46-fa34-4a69-a4fa-007e9fd2d802"]
-}, Open  ]]
+                RowBox[{"Scaled", "[", "0.72", "]"}], ",", 
+                RowBox[{"Scaled", "[", "0.28", "]"}]}], "}"}], "}"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Spacings", "\[Rule]", "1"}]}], "\[IndentingNewLine]", 
+           "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"FrameStyle", "\[Rule]", "None"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"ImageSize", "\[Rule]", "2048"}]}], "\[IndentingNewLine]", 
+         "]"}]}]}], "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+     
+     RowBox[{"Quantity", "[", 
+      RowBox[{"6", ",", "\"\<Hours\>\""}], "]"}], ",", "\[IndentingNewLine]", 
+     "\"\<PNG\>\""}], "\[IndentingNewLine]", "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"URLBuild", "[", 
+    RowBox[{"{", 
+     RowBox[{"directory", ",", "\"\<Dashboard\>\""}], "}"}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Permissions", "\[Rule]", "\"\<Public\>\""}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",ExpressionUUID->"733567a9-ce81-4eea-\
+8846-830f7ef6ec79"]
 }, Closed]]
 }, Open  ]]
 },
 WindowSize->{958, 1027},
-WindowMargins->{{1, Automatic}, {1, Automatic}},
+WindowMargins->{{Automatic, 1}, {1, Automatic}},
 WindowStatusArea->None,
 TrackCellChangeTimes->False,
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 7, 2018)",
@@ -314,40 +524,43 @@ Cell[580, 22, 92, 0, 68, "Section",ExpressionUUID->"cc048347-7bdc-4c3e-a84d-9e92
 Cell[CellGroupData[{
 Cell[697, 26, 94, 0, 55, "Subsection",ExpressionUUID->"c73da20d-36fe-4caa-acf4-0e63d25b795e"],
 Cell[794, 28, 197, 3, 35, "Text",ExpressionUUID->"02101a3b-6d2f-4919-a10f-2697ea859ed7"],
-Cell[994, 33, 232, 5, 31, "Input",ExpressionUUID->"f4d4461a-90d1-477b-b56e-fbe4af3e46f7"],
-Cell[1229, 40, 231, 3, 58, "Text",ExpressionUUID->"596e6792-5cc5-4a29-a6d1-f45ea1ed1317"]
+Cell[994, 33, 261, 6, 31, "Input",ExpressionUUID->"f4d4461a-90d1-477b-b56e-fbe4af3e46f7"],
+Cell[CellGroupData[{
+Cell[1280, 43, 96, 0, 45, "Subsubsection",ExpressionUUID->"df253450-c964-4838-92f9-d2a98cd7f683"],
+Cell[1379, 45, 326, 5, 58, "Text",ExpressionUUID->"c4bc2b65-ab72-42c2-a9b3-a4bc7fe52648"],
+Cell[1708, 52, 383, 10, 55, "Input",ExpressionUUID->"74a5d902-0211-4b63-be52-f3e05fb76f09"]
+}, Closed]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1497, 48, 115, 0, 39, "Subsection",ExpressionUUID->"9c08469f-702c-4d13-b7a2-e915adab6e74"],
-Cell[1615, 50, 533, 7, 104, "Text",ExpressionUUID->"8b0e8466-9710-4876-bda7-26a99687bd12"],
-Cell[2151, 59, 706, 19, 55, "Input",ExpressionUUID->"3c2cfd93-1821-415e-907d-39c00a71f57c"]
+Cell[2140, 68, 115, 0, 39, "Subsection",ExpressionUUID->"9c08469f-702c-4d13-b7a2-e915adab6e74"],
+Cell[2258, 70, 289, 4, 58, "Text",ExpressionUUID->"8b0e8466-9710-4876-bda7-26a99687bd12"],
+Cell[2550, 76, 418, 11, 78, "Input",ExpressionUUID->"58939b2a-25cb-47ef-b224-40b770a2ac12"],
+Cell[2971, 89, 2092, 54, 354, "Input",ExpressionUUID->"6ea1abcf-cd89-41b3-87ab-192051ba02cf"],
+Cell[5066, 145, 709, 19, 78, "Input",ExpressionUUID->"ab6398e7-34fd-455b-a5b3-8a1d5da5e543"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[2894, 83, 101, 0, 39, "Subsection",ExpressionUUID->"806205cf-e855-49f0-b8ba-d1907831339a"],
-Cell[2998, 85, 440, 6, 81, "Text",ExpressionUUID->"2f2e2db3-319f-46f8-9a25-aea2c9ccb173"],
-Cell[3441, 93, 506, 10, 55, "Input",ExpressionUUID->"2bfc648c-6009-4687-97ec-7460e74f090b"],
-Cell[3950, 105, 226, 6, 35, "Text",ExpressionUUID->"4a376d35-2772-4c04-a0e7-1284a606ff24"]
+Cell[5812, 169, 101, 0, 39, "Subsection",ExpressionUUID->"806205cf-e855-49f0-b8ba-d1907831339a"],
+Cell[5916, 171, 440, 6, 81, "Text",ExpressionUUID->"2f2e2db3-319f-46f8-9a25-aea2c9ccb173"],
+Cell[6359, 179, 586, 13, 55, "Input",ExpressionUUID->"2bfc648c-6009-4687-97ec-7460e74f090b"],
+Cell[6948, 194, 226, 6, 35, "Text",ExpressionUUID->"4a376d35-2772-4c04-a0e7-1284a606ff24"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[4213, 116, 97, 0, 39, "Subsection",ExpressionUUID->"13a1a47e-26ee-4d42-8087-4121ce2b7fe8"],
-Cell[4313, 118, 537, 11, 193, "Input",ExpressionUUID->"8d39505a-91e2-423f-b9eb-82e2f24635f6"]
+Cell[7211, 205, 97, 0, 39, "Subsection",ExpressionUUID->"13a1a47e-26ee-4d42-8087-4121ce2b7fe8"],
+Cell[7311, 207, 742, 18, 193, "Input",ExpressionUUID->"8d39505a-91e2-423f-b9eb-82e2f24635f6"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[4887, 134, 100, 0, 39, "Subsection",ExpressionUUID->"11837b66-c054-45c2-af72-48953d18cf28"],
-Cell[4990, 136, 543, 11, 193, "Input",ExpressionUUID->"1410d027-e0ae-47d1-8109-e1b44bd1f540"]
+Cell[8090, 230, 100, 0, 39, "Subsection",ExpressionUUID->"11837b66-c054-45c2-af72-48953d18cf28"],
+Cell[8193, 232, 750, 18, 193, "Input",ExpressionUUID->"1410d027-e0ae-47d1-8109-e1b44bd1f540"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[5570, 152, 95, 0, 39, "Subsection",ExpressionUUID->"d6c06c9d-22d8-44a5-9be1-be77af641279"],
-Cell[5668, 154, 479, 11, 78, "Input",ExpressionUUID->"435f5e27-4238-46ff-a685-4c632ae8805f"],
-Cell[6150, 167, 477, 11, 78, "Input",ExpressionUUID->"1d5601d6-83ae-4140-8f57-32d8d4e4fcab"],
-Cell[6630, 180, 459, 11, 55, "Input",ExpressionUUID->"564796b9-93dc-4ee7-9910-922dc1d8acb8"]
+Cell[8980, 255, 95, 0, 39, "Subsection",ExpressionUUID->"d6c06c9d-22d8-44a5-9be1-be77af641279"],
+Cell[9078, 257, 638, 18, 78, "Input",ExpressionUUID->"435f5e27-4238-46ff-a685-4c632ae8805f"],
+Cell[9719, 277, 629, 17, 78, "Input",ExpressionUUID->"1d5601d6-83ae-4140-8f57-32d8d4e4fcab"],
+Cell[10351, 296, 599, 15, 55, "Input",ExpressionUUID->"564796b9-93dc-4ee7-9910-922dc1d8acb8"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[7126, 196, 96, 0, 39, "Subsection",ExpressionUUID->"36fcd48b-acde-4e29-bff2-598ddc51cbc7"],
-Cell[CellGroupData[{
-Cell[7247, 200, 3739, 74, 1159, "Input",ExpressionUUID->"7c53e8f1-177c-4e6b-b4c8-aa3faae5134d"],
-Cell[10989, 276, 489, 12, 71, "Output",ExpressionUUID->"43ccef46-fa34-4a69-a4fa-007e9fd2d802"]
-}, Open  ]]
+Cell[10987, 316, 96, 0, 39, "Subsection",ExpressionUUID->"36fcd48b-acde-4e29-bff2-598ddc51cbc7"],
+Cell[11086, 318, 8654, 181, 1389, "Input",ExpressionUUID->"733567a9-ce81-4eea-8846-830f7ef6ec79"]
 }, Closed]]
 }, Open  ]]
 }
