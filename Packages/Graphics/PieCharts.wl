@@ -1,7 +1,7 @@
 (* ::Package:: *)
 
-Module[{bin = Databin["xHwJG9Ru", All, {"Source", "Language"}], data},
-	Get[CloudObject[FileNameJoin[{"TwitterAnalysis", "Packages", "Utilities", "TwitterStyling.wl"}]]];
+Module[{bin = Databin["<wolfram:slot id='short-id'/>", All, {"Source", "Language"}], data, dir = "<wolfram:slot id='dir'/>"},
+	Get[CloudObject[FileNameJoin[{dir, "Packages", "Utilities", "TwitterStyling.wl"}]]];
 	data = Dataset[bin];
 	GraphicsRow[{
 		With[{sources = Take[Sort[Normal[Counts[data[All, "Source"]]], Greater], UpTo[Length[TwitterStyling`Colors[]]]]},
@@ -9,7 +9,7 @@ Module[{bin = Databin["xHwJG9Ru", All, {"Source", "Language"}], data},
 				Values[sources],
 				Background -> None,
 				ChartLegends -> Placed[ReplaceAll[Keys[sources], {None -> "Browser"}], Left],
-				ChartStyle -> TwitterStyling`Colors[],
+				ChartStyle -> Map[Directive[#, EdgeForm[TwitterStyling`TextColor[]]]&, TwitterStyling`Colors[]],
 				ImageSize -> Scaled[0.48],
 				SectorOrigin -> {Automatic, 1}
 			]
@@ -19,12 +19,13 @@ Module[{bin = Databin["xHwJG9Ru", All, {"Source", "Language"}], data},
 				Values[language],
 				Background -> None,
 				ChartLegends -> Placed[Keys[language], Right],
-				ChartStyle -> TwitterStyling`Colors[],
+				ChartStyle -> Map[Directive[#, EdgeForm[TwitterStyling`TextColor[]]]&, TwitterStyling`Colors[]],
 				ImageSize -> Scaled[0.48],
 				SectorOrigin -> {Automatic, 1}
 			]
 		]},
 		Alignment -> Center,
+		BaseStyle -> {FontColor -> TwitterStyling`TextColor[]},
 		Background -> TwitterStyling`BackgroundColor[],
 		ImageSize -> 1005
 	]

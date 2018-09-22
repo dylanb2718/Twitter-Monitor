@@ -75,13 +75,13 @@ Module[{raw = Map[ImportString[#,"JSON"]&, ReadList[file]], data, qFile, copied}
 data = ProcessRawTwitterData[raw];
 Check[
 DatabinUpload[bin, data],
-qFile = CopyFile[CloudObject[file], CloudObject[URLBuild[{cDir, "Quarantine",FileNameTake[file]}]]];
-If[!FailureQ[qFile] && FileExistsQ[qFile], DeleteObject[CloudObject[file]]];
+qFile = CopyFile[file, CloudObject[URLBuild[{cDir, "Quarantine", URLEncode[FileNameTake[file]]}]]];
+If[!FailureQ[qFile] && FileExistsQ[qFile], DeleteObject[file]];
 Return[uploadFailure[file, qFile]],
 Databin::apierr
 ];
-copied = CopyFile[CloudObject[file], CloudObject[URLBuild[{cDir, "Processed", FileNameTake[file]}]]];
-If[!FailureQ[copied] && FileExistsQ[copied], DeleteObject[CloudObject[file]]];
+copied = CopyFile[file, CloudObject[URLBuild[{cDir, "Processed", URLEncode[FileNameTake[file]]}]]];
+If[!FailureQ[copied] && FileExistsQ[copied], DeleteObject[file]];
 uploadSuccess[file, bin]
 ]
 

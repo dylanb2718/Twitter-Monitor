@@ -45,15 +45,40 @@ SetProjectDirectory[path_] := ($workingDirectory = path;)
 
 (* GatherTweets is used to make the correct request to Twitter plus do the initial data cleaning.
 Note: the data should not be completely cleaned up here, the task should simply be gather the specific fields that you want to preserve. *)
-GatherTweets[term_] := 
-	Module[{paramLoc = CloudObject[URLBuild[{$workingDirectory, term<>"-params"}]],
-			dataLoc, params, runTime = DateString[{"Year","Month","Day","-","Hour24","Minute","Second","-",term}],
+GatherTweets[term_String] := 
+	Module[{paramLoc = CloudObject[URLBuild[{$workingDirectory, URLEncode[term]<>"-params"}]],
+			dataLoc, params, runTime = DateString[{"Year","Month","Day","-","Hour24","Minute","Second","-",URLEncode[term]}],
 			tweets, rawTweets, response, body, freshURL, nextParams, results},
 		params = CloudGet[paramLoc];
 		response = If[FailureQ[params],
 				TwitterRequest[term],
 				TwitterRequest[params]
 			];
+		If[response["StatusCode"] =!= 200,
+			Return[$Failed]
+		];
+		body = ImportString[response["Body"], "JSON"];
+		
+		freshURL = Lookup[Lookup[body, "search_metadata"], "refresh_url"];
+		nextParams = Append[Rule@@@URLDecode[StringSplit[StringSplit[StringTake[freshURL, 2;;], "&"], "="]], Rule["count", 100]];
+		CloudPut[nextParams, paramLoc];
+
+		rawTweets = Lookup[body, "statuses"];
+		tweets = Map[processTweet, rawTweets];
+		dataLoc = CloudObject[URLBuild[{$workingDirectory, "Holding", runTime}]];
+		results = Map[Check[PutAppend[#, dataLoc], $Failed]&, tweets];
+		If[And@@Map[FailureQ, results],
+			DeleteObject[paramLoc];
+			$Failed,
+			dataLoc
+		]
+	]
+	
+GatherTweets[params_List] := 
+	Module[{paramLoc = CloudObject[URLBuild[{$workingDirectory, URLEncode[Lookup[params, "q"]]<>"-params"}]],
+			dataLoc, runTime = DateString[{"Year","Month","Day","-","Hour24","Minute","Second","-",URLEncode[Lookup[params, "q"]]}],
+			tweets, rawTweets, response, body, freshURL, nextParams, results},
+		response = TwitterRequest[params];
 		If[response["StatusCode"] =!= 200,
 			Return[$Failed]
 		];

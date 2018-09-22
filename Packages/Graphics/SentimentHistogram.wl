@@ -1,7 +1,7 @@
 (* ::Package:: *)
 
-Module[{max, min, full, bin = Databin["xHwJG9Ru"], data, dir = "TwitterAnalysis"},
-	Get[CloudObject[FileNameJoin[{"TwitterAnalysis", "Packages", "Utilities", "TwitterStyling.wl"}]]];
+Module[{max, min, full, bin = Databin["<wolfram:slot id='short-id'/>"], data, dir = "<wolfram:slot id='dir'/>"},
+	Get[CloudObject[FileNameJoin[{dir, "Packages", "Utilities", "TwitterStyling.wl"}]]];
 	data=Dataset[bin];
 	Column[{
 		GeoHistogram[
@@ -20,7 +20,7 @@ Module[{max, min, full, bin = Databin["xHwJG9Ru"], data, dir = "TwitterAnalysis"
 			GeoBackground -> GeoStyling[{"CountryBorders", "Land" -> TwitterStyling`BackgroundColor[1], "Ocean" -> TwitterStyling`BackgroundColor[2], "Border" -> Directive[TwitterStyling`TextColor[1], Dotted, Thin]}],
 			GeoRange -> "World",
 			ImageSize -> Full,
-			PlotStyle -> Directive[EdgeForm[Directive[TwitterStyling`TextColor[1], Thickness[0.000075]]], Opacity[0.35]]
+			PlotStyle -> Directive[EdgeForm[Directive[TwitterStyling`TextColor[1], Thickness[0.000075]]], Opacity[0.9]]
 		],
 		Graphics[{
 			Table[{
@@ -29,7 +29,7 @@ Module[{max, min, full, bin = Databin["xHwJG9Ru"], data, dir = "TwitterAnalysis"
 				{i, 0, 1, 0.05}
 			],
 			TwitterStyling`TextColor[-1],
-			Text[Style["-", 24], {0.05, 0.025}, {0, 0}, Background -> None],
+			Text[Style["-", 24], {0.025, 0.025}, {0, 0}, Background -> None],
 			Text[Style["+", 24], {1.025, 0.025}, {0, 0}, Background -> None]},
 			ImageSize -> Full,
 			PlotRange -> {{0, 1.05}, {0, 0.05}},

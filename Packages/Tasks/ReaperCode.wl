@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-Block[{term = "starbucks", dir = "TwitterAnalysis"},
+Block[{term = "<wolfram:slot id='term'/>", dir = "<wolfram:slot id='dir'/>"},
 (* Get the general package *)
  Get[CloudObject[FileNameJoin[{dir, "Packages", "Utilities", "TwitterReaper.wl"}]]];
  (* Setup authentication *)
