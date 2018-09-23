@@ -74,3 +74,7 @@ There are two PieCharts included within this visualization. First is a breakdown
 
 ### Dashboard Notebook ###
 The graphics described above can all be viewed individually, but analysis is much easier if they are all displayed on a single dashboard. The example given here is a notebook that pulls in the latest graphics generated and displays them. This could also easily be done in an HTML page.
+
+#### Examples ####
+
+[! [View example] (https://wolfr.am/xQP8ju2q)] (https://wolfr.am/xQPb6kqB)
