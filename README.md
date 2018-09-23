@@ -77,4 +77,4 @@ The graphics described above can all be viewed individually, but analysis is muc
 
 #### Examples ####
 
-[! [View example] (https://wolfr.am/xQP8ju2q)] (https://wolfr.am/xQPb6kqB)
+[![View example](https://wolfr.am/xQP8ju2q)](https://wolfr.am/xQPb6kqB)
